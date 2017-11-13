@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>mobileH5</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <!--开启对web app的支持-->
+    <!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <!--Iphone 专属 Start-->
+    <!--iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览；开启对web app的支持-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!--主要是正对苹果手机将数字自动识别为号码-->
+    <!--iphone的私有标签，它指定的iphone中safari顶端的状态条的样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--主要是正对苹果手机,忽略将页面中的数字识别为电话号码-->
     <meta name="format-detection" content="telephone=no" />
-    <!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
+    <!--Iphone 专属 End-->
+
+    <!-- 忽略识别邮箱,IOS不会自动识别，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
     <meta content="email=no" name="format-detection" />
     <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL" />
     <!-- 添加智能 App 广告条 Smart App Banner：告诉浏览器这个网站对应的app，并在页面上显示下载banner:https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html -->
