@@ -1,0 +1,245 @@
+@charset "UTF-8";
+$WinW: 7.5rem;
+$BaseC: #555;
+$LinkC: #06f;
+$HoverC: #f60;
+$FontSize: 12px;
+$BorderC: #ccc;
+
+// mixins
+
+@mixin borderX($width:1px,$color:$BorderC) {
+  border: $width solid $color;
+}
+
+@mixin dz($time:0.25s) {
+  -webkit-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}
+
+//functions
+
+//iPhone 6尺寸作为设计稿基准
+$vm_base: 375;
+@function vw($px) {
+  @return ($px / 375) * 100vw;
+}
+
+//resetCSS
+* {
+  vertical-align: baseline;
+  font-family: sans-serif;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+:focus {
+  outline: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed
+}
+
+ul, ol, menu {
+  list-style: none
+}
+
+fieldset, img {
+  border: none
+}
+
+img, object, select, input, textarea, button {
+  vertical-align: middle
+}
+
+//IE10（winphone8）禁用 select 默认下拉箭头
+select::-ms-expand {
+  display: none;
+}
+
+input, textarea, select, address, caption, cite, code, dfn, em, i, b, strong, small, th, var, abbr {
+  font-size: 100%;
+  font-style: normal
+}
+
+caption, th {
+  text-align: left;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+code, kbd, pre, samp, tt {
+  font-family: Consolas, "Courier New", Courier, monospace;
+}
+
+address, cite, dfn, em, var, i {
+  font-style: normal;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  color: $LinkC;
+  text-decoration: none;
+  cursor: pointer;
+  &:link, &:visited, &:active {
+    color: $LinkC;
+  }
+  &:hover, &:focus {
+    color: $HoverC;
+    text-decoration: underline;
+    outline: none;
+  }
+  &, span, i, em, u, strong, b, p, img, ul, li, div, dd, dt, dl, ol, table, th, td, h1, h2, h3, h4, h5, h6, input, textarea, button, small, select {
+    cursor: pointer;
+    @include dz;
+  }
+}
+
+abbr[title], acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+html {
+  min-width: $WinW;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+body {
+  font-size: $FontSize;
+  color: $BaseC;
+  line-height: 2;
+  font-family: Helvetica;
+}
+
+//除部分机器点击时自带的效果,点击时会出现一个边框或者半透明灰色遮罩
+body, button, input, select, textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a, img {
+  -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
+}
+
+//常用布局css
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tc {
+  text-align: center;
+}
+
+.cf:before, .cf:after, .web:before, .web:after, .web_:before, .web_:after {
+  content: "";
+  display: table;
+}
+
+.cf:after, .web:after, .web_:after {
+  clear: both;
+}
+
+.cf {
+  zoom: 1;
+}
+
+.web {
+  width: $WinW;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+.web_ {
+  min-width: $WinW;
+  width: 100%;
+  zoom: 1;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix {
+  clear: both;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+//单行溢出省略号
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//多行溢出省略号
+.ellipsisLines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /*适用于WebKit浏览器及移动端
+  -webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：
+  display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+  -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。 */
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbW1vbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGlCQUFpQjtBQUNqQixjQUFjO0FBQ2QsYUFBQTtBQUNBLGFBQUE7QUFDQSxjQUFFO0FBQ0YsZ0JBQUM7QUFDRCxlQUFlOztBQUVmOzs7RUFHRSw0QkFBNEI7Q0FDN0I7O0FBRUQ7RUFDRSwwQ0FBMEM7RUFHMUMsa0NBQWtDO0NBQ25DOztBQUVEOzs7Y0FHRTtBQURGO0VBR0UsNEJBQVM7Q0FEVjs7QUFFRDs7RUFJQSx5QkFBQTtFQUNFLHdCQUFXO0VBQ1osb0JBQUE7RUFEQyxnQkFBZTtFQUdqQixVQUFBO0VBQ0UsV0FBQTtFQUNBLFVBQUE7Q0FERDs7QUFFRDtFQUdBLFdBQUE7Q0FEQzs7QUFFRDtFQUdBLDBCQUFBO0VBQ0Usa0JBQVk7RUFDYixtQkFBQTtDQURBOztBQUVEO0VBR0MsZ0JBQUE7Q0FEQTs7QUFFRDtFQUdFLFlBQUE7Q0FDRDs7QUFFRDtFQUNFLHNCQUFpQjtDQUNsQjs7QUFFRDtFQUNFLGdCQUFlO0VBQ2hCLGtCQUFBO0NBREE7O0FBRUQ7RUFHQyxpQkFBQTtDQURBOztBQUVEOzs7Ozs7Ozs7Ozs7O0VBZUUsZUFBQTtDQUREOztBQUVEO0VBQ0UseURBRUU7Q0FESDs7QUFFRDtFQUNBLG1CQUFBO0NBQ0M7O0FBRUQ7RUFDRSxhQUFBO0NBQ0Q7O0FBRUQ7RUFDRSxZQUFFO0VBQ0YsY0FFRjtDQURDOztBQUVEO0VBQ0UsY0FBRTtFQUNGLHNCQUVGO0VBREUsZ0JBRUE7RUFERDtJQUNHLGNBQWM7R0FDbEI7RUFHQTtJQUNFLGVBQUE7SUFERCwyQkFBQTtJQUNHLGNBQWM7R0FDbEI7RUFDRTtJQUdGLGdCQUFBO0lBREMsWUFBQTtHQUNFO0NBQ0g7O0FBRUE7RUFHRSwwQkFBWTtFQUNiLGFBQUE7Q0FEQTs7QUFFRDtFQUNFLGlCQUVEO0VBREEsbUJBQUE7RUFDQywrQkFBK0I7RUFDakMsNEJBQUE7Q0FDQzs7QUFFRDtFQUNBLHFCQUFBO0VBR0MsY0FBQTtFQURBLGVBQUE7Q0FDQTs7QUFFRDtFQUNDLDhEQUFBO0dBQ0Msb0NBQXFDO0NBQ3ZDOztBQUVBO0VBQ0UsNEJBQTRCLENBQUMsbUJBQW1CO0NBR2xEOztBQUFBOztFQUlBLFlBQUE7Q0FEQzs7QUFFRDtFQUNFLGFBQWE7Q0FDZjs7QUFFQTtFQUNFLGlCQUFpQjtDQUNuQjs7QUFFQTtFQUNFLGtCQUFrQjtDQUNwQjs7QUFFQTtFQUNFLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNBLFlBQUE7RUFHQSxlQUFBO0NBREM7O0FBRUQ7RUFDRSxZQUFZO0NBQ2Q7O0FBRUE7RUFDRSxRQUFRO0NBQ1Y7O0FBRUE7RUFDRSxhQUFhO0VBQ2Ysa0JBQUE7RUFDRSxtQkFBWTtFQUNiLFFBQUE7Q0FDQTs7QUFFRDtFQUNFLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osUUFBUTtDQUNUOztBQUVEO0VBQ0UsZUFBZTtDQUNoQjs7QUFFRDtFQUNFLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLFlBQVk7Q0FDYjs7QUFFRDtFQUNFLFlBQVk7RUFDWixpQkFBaUI7RUFDakIsUUFBUTtDQUNUOztBQUVEO0VBQ0UsYUFBYTtFQUNiLGVBQWU7RUFDZixZQUFZO0VBQ1osVUFBVTtDQUNYOztBQUVEOztFQUVFLGlCQUFpQjtFQUNqQix3QkFBd0I7RUFDeEIsb0JBQW9CO0NBQ3JCOztBQUVEOztFQUVFLHFCQUFxQjtFQUNyQiw2QkFBNkI7RUFDN0Isc0JBQXNCO0VBQ3RCLGlCQUFpQjtFQUNqQjs7O3NEQUdvRDtDQUNyRCIsImZpbGUiOiJjb21tb24uc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcblxuJGJvcmRlckNvbG9yOiAjY2NjO1xuQG1peGluIGJvcmRlclgoJHdpZHRoOjFweCwkY29sb3I6JGJvcmRlckNvbG9yKSB7XG4gIGJvcmRlcjogJHdpZHRoIHNvbGlkICRjb2xvcjtcbn0iXX0= */
